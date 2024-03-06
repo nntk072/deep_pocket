@@ -44,7 +44,8 @@ class StockTradingEnv(Env):
         index = df[df['date'].ge(str(from_date))].index[0] // 28
         buffer_ending_date = df.iloc[-1]['date']
         df = df.groupby('date')
-        
+        # show df for checking
+        df.show()
         return [df.get_group(x).to_numpy() for x in df.groups], index, str(buffer_ending_date)
 
 
